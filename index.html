@@ -5,19 +5,50 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Star Wars - Guessing Game</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+		<script src="https://kit.fontawesome.com/a80d061f81.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<main>
-			<p class="character">?</p>
-			<div class="button-box"><button></button><button></button><button></button></div>
+			<div class="button-box">
+				<div class="button-box__box">
+					<div class="holo"></div>
+					<div class="holoblue"></div>
+					<div class="holoshadow"></div>
+					<img class="animationholo" src="https://vignette.wikia.nocookie.net/starwars/images/6/60/WedgeHelmetless-ROTJHD.jpg" alt="" />
+
+					<button></button>
+				</div>
+				<div class="button-box__box">
+					<div class="holo"></div>
+					<div class="holoblue"></div>
+					<div class="holoshadow"></div>
+					<img class="animationholo img2" src="https://vignette.wikia.nocookie.net/starwars/images/6/60/WedgeHelmetless-ROTJHD.jpg" alt="" />
+
+					<button></button>
+				</div>
+				<div class="button-box__box">
+					<div class="holo"></div>
+					<div class="holoblue"></div>
+					<div class="holoshadow"></div>
+					<img class="animationholo img3" src="https://vignette.wikia.nocookie.net/starwars/images/6/60/WedgeHelmetless-ROTJHD.jpg" alt="" />
+
+					<button></button>
+				</div>
+			</div>
 			<div class="info">
-				<p class="species"></p>
-				<p class="height"></p>
-				<p class="skin"></p>
-				<p class="year"></p>
-				<p class="homeworld"></p>
-				<p class="starships"></p>
-				<p class="films"></p>
+				<p class="species"><i class="fas fa-street-view"></i> Species: <span></span></p>
+
+				<p class="homeworld"><i class="fas fa-globe-asia"></i> Homeworld:<span></span></p>
+
+				<p class="date"><i class="far fa-calendar-alt"></i> Live:<span></span></p>
+
+				<p class="died"><i class="fas fa-diagnoses"></i> Death Location:<span></span></p>
+
+				<p class="points">Score: <span></span></p>
 			</div>
 		</main>
 		<script src="script.js"></script>

@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #e2e2e2;
+  height: 100vh;
+  background-color: #111111;
+  background: url("/img/bg.jpg");
+  background-position: center;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px;
+  max-width: 400px;
+  background: linear-gradient(3deg, #3d649b 0%, #11111100 100%);
+  -webkit-box-shadow: 0px 20px 15px -5px #314f74;
+          box-shadow: 0px 20px 15px -5px #314f74;
+  margin-bottom: 50px;
+}
+
+.info {
+  width: 100%;
+  background: #3c619561;
+  margin-top: 10px;
+  padding: 0 20px;
+}
+
+.info p {
+  color: #efeded;
+  text-transform: capitalize;
+  margin: 15px 0;
+}
+
+.info p i {
+  font-size: 1.2rem;
+  opacity: 0.4;
+  margin: 0 10px;
+  width: 20px;
+}
+
+.info p span {
+  font-size: 0.9rem;
+  margin: 0 13px;
+  color: #c2c2c2;
+}
+
+.info .points {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.info .points span {
+  font-size: 1rem;
+}
+
+.button-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.button-box__box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 25px;
+}
+
+.button-box img {
+  position: relative;
+  width: 150px;
+  height: 200px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  background: #1f2a39c2;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  z-index: 0;
+  -webkit-clip-path: polygon(5% 0, 94% 0, 85% 100%, 19% 100%);
+          clip-path: polygon(5% 0, 94% 0, 85% 100%, 19% 100%);
+  opacity: 0.7;
+}
+
+.button-box .animationholo {
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-name: holo;
+          animation-name: holo;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.button-box .animationholo.img2 {
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+.button-box .animationholo.img3 {
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+.button-box .holo {
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  top: -1px;
+  z-index: 1;
+  opacity: 0.1;
+  -webkit-clip-path: polygon(5% 0, 95% 0px, 88% 100%, 15% 100%);
+          clip-path: polygon(5% 0, 95% 0px, 88% 100%, 15% 100%);
+  background: url("/img/holo.jpg");
+  background-position-y: 0px;
+  -webkit-animation-name: holograin;
+          animation-name: holograin;
+  -webkit-animation-duration: 30s;
+          animation-duration: 30s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.button-box .holoblue {
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  top: -1px;
+  z-index: 1;
+  opacity: 0.3;
+  -webkit-clip-path: polygon(5% 0, 95% 0px, 88% 100%, 15% 100%);
+          clip-path: polygon(5% 0, 95% 0px, 88% 100%, 15% 100%);
+  background: #3b6094;
+}
+
+.button-box .holoshadow {
+  width: 150px;
+  height: 0px;
+  bottom: 30px;
+  position: absolute;
+  background: #3b6296;
+  -webkit-box-shadow: 0px -20px 20px 10px #3d649b;
+          box-shadow: 0px -20px 20px 10px #3d649b;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 3;
+}
+
+button {
+  position: relative;
+  top: -4px;
+  width: 150px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #e9e9e9;
+  padding: 10px 15px;
+  border: 1px solid #4c6f9d;
+  background: linear-gradient(177deg, #3d649b 0%, #11111100 100%);
+  -webkit-box-shadow: -1px -6px 6px -5px #ffffff52;
+          box-shadow: -1px -6px 6px -5px #ffffff52;
+  z-index: 3;
+  cursor: pointer;
+  -webkit-transition: 0.3s border;
+  transition: 0.3s border;
+}
+
+button:hover {
+  border: 1px solid #669ade;
+  background: linear-gradient(177deg, #3a8cff 0%, #11111100 100%);
+}
+
+@-webkit-keyframes holo {
+  0% {
+    opacity: 0.3;
+  }
+  5% {
+    opacity: 0.6;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  63% {
+    opacity: 0.3;
+  }
+  65% {
+    opacity: 0.6;
+  }
+  97% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes holo {
+  0% {
+    opacity: 0.3;
+  }
+  5% {
+    opacity: 0.6;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  63% {
+    opacity: 0.3;
+  }
+  65% {
+    opacity: 0.6;
+  }
+  97% {
+    opacity: 0.6;
+  }
+}
+
+@-webkit-keyframes holograin {
+  0% {
+    background-position-y: 0px;
+  }
+  50% {
+    background-position-y: 800px;
+  }
+  100% {
+    background-position-y: 0px;
+  }
+}
+
+@keyframes holograin {
+  0% {
+    background-position-y: 0px;
+  }
+  50% {
+    background-position-y: 800px;
+  }
+  100% {
+    background-position-y: 0px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

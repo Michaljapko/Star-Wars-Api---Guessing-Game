@@ -1,57 +1,76 @@
 const info = document.querySelector('.info');
 const buttonBox = document.querySelector('.button-box');
 let buttons = buttonBox.querySelectorAll('button');
+let pointsDOM = document.querySelector('.points');
 
 let rightCharInfo = '';
+let rightCharImg = '';
+let score = 0;
+let randomNumber; // Check this num every time when making new one in order to not making same number. 
 
-async function randomCharNum() {
-	const res = await fetch(`https://swapi.dev/api/people/`);
-	const data = await res.json();
-	return parseInt(Math.random() * data.count);
+function randomCharNum() {
+	num = parseInt(Math.random() * (87 - 1) + 1);
+	if (randomNumber === num) {
+		num++;
+		randomNumber = num;
+	}
+	randomNumber = num;
+	return randomNumber;
 }
 
 async function assignButton() {
+	const firstFakeChar = await getFakeCharName();
+	const secondFakeChar = await getFakeCharName();
+	if (firstFakeChar === secondFakeChar) {
+		secondFakeChar = await getFakeCharName();
+	}
 	let arr = Object.values(buttons);
 	arr = shuffle(arr);
+
 	arr[0].innerHTML = rightCharInfo;
-	arr[1].innerHTML = await getFakeCharName();
-	arr[2].innerHTML = await getFakeCharName();
+	arr[0].previousElementSibling.src = rightCharImg;
+	arr[1].innerHTML = firstFakeChar[0];
+	arr[1].previousElementSibling.src = firstFakeChar[1];
+	arr[2].innerHTML = secondFakeChar[0];
+	arr[2].previousElementSibling.src = secondFakeChar[1];
 }
 
 async function getCharacter() {
-	const resPeople = await fetch(`https://swapi.dev/api/people/${await randomCharNum()}`);
+	const resPeople = await fetch(`api/id/${randomCharNum()}.json`);
 	const charInfo = await resPeople.json();
 	rightCharInfo = charInfo.name;
-	info.querySelector('.species').innerHTML = await getPropetyName(charInfo.species);
-	info.querySelector('.height').innerHTML = charInfo.height;
-	info.querySelector('.skin').innerHTML = charInfo.skin_color;
-	info.querySelector('.year').innerHTML = charInfo.birth_year;
-	info.querySelector('.homeworld').innerHTML = await getPropetyName(charInfo.homeworld);
-	info.querySelector('.starships').innerHTML = await getPropetyName(charInfo.starships);
-	info.querySelector('.films').innerHTML = await getPropetyName(charInfo.films, 'films');
+	rightCharImg = charInfo.image;
+	info.querySelector('.species').lastElementChild.innerHTML = `${charInfo.species}`;
+	info.querySelector('.homeworld').lastElementChild.innerHTML = `${checkUnknow(charInfo.homeworld)}`;
+	info.querySelector('.date').lastElementChild.innerHTML = `${dateEra(charInfo.born)} - ${dateEra(charInfo.died)}`;
+	info.querySelector('.died').lastElementChild.innerHTML = `${checkUnknow(charInfo.diedLocation)}`;
+
 	await assignButton();
 }
 
 async function getFakeCharName() {
-	const resPeople = await fetch(`https://swapi.dev/api/people/${await randomCharNum()}`);
+	const resPeople = await fetch(`api/id/${await randomCharNum()}.json`);
 	const charInfo = await resPeople.json();
-	return charInfo.name;
+	const arr = [charInfo.name, charInfo.image];
+	return arr;
 }
 
-async function getPropetyName(url, dataType) {
-	if (Array.isArray(url)) {
-		const arr = [];
-		for (const link of url) {
-			const res = await fetch(link);
-			const data = await res.json();
-			dataType === 'films' ? arr.push(data.title) : arr.push(data.name);
-		}
-		return arr;
-	} else {
-		const res = await fetch(url);
-		const data = await res.json();
-		return data.name;
+function checkUnknow(data) {
+	if (data == null) {
+		return 'Unknow';
 	}
+	return data;
+}
+function dateEra(date) {
+	if (date == null) return 'Unknow';
+	date = date.toString();
+	if (date.includes('-')) {
+		date = date.replace('-', '');
+		date += ' BBY';
+	} else {
+		date += ' ABY';
+	}
+	return date;
 }
 
 function shuffle(arr) {
@@ -61,9 +80,21 @@ function shuffle(arr) {
 }
 
 const check = (e) => {
+	if (e.target.localName === 'button' && e.target.innerHTML !== rightCharInfo) {
+		score--;
+		pointsUpdate();
+	}
 	if (e.target.innerHTML === rightCharInfo) {
-		getCharacter()
+		score++;
+		pointsUpdate();
+		getCharacter();
 	}
 };
 
+const pointsUpdate = () => {
+	pointsDOM.firstElementChild.innerHTML = score;
+};
+
 buttonBox.addEventListener('click', check);
+
+getCharacter();

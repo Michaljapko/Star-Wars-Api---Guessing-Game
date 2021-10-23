@@ -1,0 +1,180 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Roboto Condensed', sans-serif;
+	color: #e2e2e2;
+	height: 100vh;
+	background-color: #111111;
+	background: url('/img/bg.jpg');
+	background-position: center;
+}
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px;
+	max-width: 400px;
+	background: linear-gradient(3deg, rgb(61, 100, 155) 0%, #11111100 100%);
+	box-shadow: 0px 20px 15px -5px #314f74;
+	margin-bottom: 50px;
+}
+
+.info {
+	width: 100%;
+	background: #3c619561;
+	margin-top: 10px;
+	padding: 0 20px;
+	p {
+		color: #efeded;
+		text-transform: capitalize;
+		margin: 15px 0;
+
+		i {
+			font-size: 1.2rem;
+			opacity: 0.4;
+			margin: 0 10px;
+			width: 20px;
+		}
+		span {
+			font-size: 0.9rem;
+			margin: 0 13px;
+			color: #c2c2c2;
+		}
+	}
+	.points {
+		font-size: 1.2rem;
+		text-align: center;
+		span {
+			font-size: 1rem;
+		}
+	}
+}
+
+.button-box {
+	display: flex;
+	position: relative;
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		padding: 0 25px;
+	}
+	img {
+		position: relative;
+		width: 150px;
+		height: 200px;
+		-o-object-fit: cover;
+		object-fit: cover;
+		background: #1f2a39c2;
+		-webkit-filter: grayscale(1);
+		filter: grayscale(1);
+		z-index: 0;
+		clip-path: polygon(5% 0, 94% 0, 85% 100%, 19% 100%);
+		opacity: 0.7;
+	}
+	.animationholo {
+		animation-duration: 6s;
+		animation-name: holo;
+		animation-iteration-count: infinite;
+	}
+	.animationholo.img2 {
+		animation-duration: 6s;
+		animation-delay: 2s;
+	}
+	.animationholo.img3 {
+		animation-duration: 6s;
+		animation-delay: 1s;
+	}
+	.holo {
+		width: 150px;
+		height: 200px;
+		position: absolute;
+		top: -1px;
+		z-index: 1;
+		opacity: 0.1;
+		clip-path: polygon(5% 0, 95% 0px, 88% 100%, 15% 100%);
+		background: url('/img/holo.jpg');
+		background-position-y: 0px;
+		animation-name: holograin;
+		animation-duration: 30s;
+		animation-iteration-count: infinite;
+	}
+	.holoblue {
+		width: 150px;
+		height: 200px;
+		position: absolute;
+		top: -1px;
+		z-index: 1;
+		opacity: 0.3;
+		clip-path: polygon(5% 0, 95% 0px, 88% 100%, 15% 100%);
+		background: #3b6094;
+	}
+	.holoshadow {
+		width: 150px;
+		height: 0px;
+		bottom: 30px;
+		position: absolute;
+		background: #3b6296;
+		box-shadow: 0px -20px 20px 10px #3d649b;
+		align-items: center;
+		z-index: 3;
+	}
+}
+
+button {
+	position: relative;
+	top: -4px;
+	width: 150px;
+	font-size: 1rem;
+	font-weight: bold;
+	color: #e9e9e9;
+	padding: 10px 15px;
+	border: 1px solid #4c6f9d;
+	background: linear-gradient(177deg, #3d649b 0%, #11111100 100%);
+	box-shadow: -1px -6px 6px -5px #ffffff52;
+	z-index: 3;
+	cursor: pointer;
+	transition: 0.3s border;
+}
+button:hover {
+	border: 1px solid #669ade;
+	background: linear-gradient(177deg, #3a8cff 0%, #11111100 100%);
+}
+
+@keyframes holo {
+	0% {
+		opacity: 0.3;
+	}
+	5% {
+		opacity: 0.6;
+	}
+	60% {
+		opacity: 0.6;
+	}
+	63% {
+		opacity: 0.3;
+	}
+	65% {
+		opacity: 0.6;
+	}
+	97% {
+		opacity: 0.6;
+	}
+}
+@keyframes holograin {
+	0% {
+		background-position-y: 0px;
+	}
+	50% {
+		background-position-y: 800px;
+	}
+	100% {
+		background-position-y: 0px;
+	}
+}
