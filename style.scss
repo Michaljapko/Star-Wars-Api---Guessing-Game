@@ -14,7 +14,7 @@ body {
 	color: #e2e2e2;
 	height: 100vh;
 	background-color: #111111;
-	background: url('/img/bg.jpg');
+	background: url('../img/bg.jpg');
 	background-position: center;
 }
 main {
@@ -103,7 +103,7 @@ main {
 		z-index: 1;
 		opacity: 0.1;
 		clip-path: polygon(5% 0, 95% 0px, 88% 100%, 15% 100%);
-		background: url('/img/holo.jpg');
+		background: url('../img/holo.jpg');
 		background-position-y: 0px;
 		animation-name: holograin;
 		animation-duration: 30s;
