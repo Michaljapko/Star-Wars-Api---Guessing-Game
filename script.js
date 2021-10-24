@@ -6,16 +6,23 @@ let pointsDOM = document.querySelector('.points');
 let rightCharInfo = '';
 let rightCharImg = '';
 let score = 0;
-let randomNumber; // Check this num every time when making new one in order to not making same number. 
+let arrRandomNum = [1, 1, 1]; // Check this arr every time when making new num in order to not making same number.
 
 function randomCharNum() {
 	num = parseInt(Math.random() * (87 - 1) + 1);
-	if (randomNumber === num) {
-		num++;
-		randomNumber = num;
+	if (arrRandomNum.includes(num)) {
+		arrRandomNum.shift();
+		if (num === 87) {
+			num--;
+		} else {
+			num++;
+		}
+		arrRandomNum.push(num);
+	} else {
+		arrRandomNum.shift();
+		arrRandomNum.push(num);
 	}
-	randomNumber = num;
-	return randomNumber;
+	return num;
 }
 
 async function assignButton() {
