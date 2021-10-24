@@ -1,11 +1,17 @@
 const info = document.querySelector('.info');
 const buttonBox = document.querySelector('.button-box');
-let buttons = buttonBox.querySelectorAll('button');
-let pointsDOM = document.querySelector('.points');
+const img = document.querySelector('.img');
+const img2 = document.querySelector('.img2');
+const img3 = document.querySelector('.img3');
+const buttons = buttonBox.querySelectorAll('button');
+const pointsDOM = document.querySelector('#points');
+const addPointsDOM = document.querySelector('.addpoints');
+const loadingDOM = document.querySelector('.loading');
 
 let rightCharInfo = '';
 let rightCharImg = '';
 let score = 0;
+let imgLoaded = 0;
 let arrRandomNum = [1, 1, 1]; // Check this arr every time when making new num in order to not making same number.
 
 function randomCharNum() {
@@ -33,7 +39,9 @@ async function assignButton() {
 	}
 	let arr = Object.values(buttons);
 	arr = shuffle(arr);
-
+	arr.forEach(function (button) {
+		button.classList.remove('red');
+	});
 	arr[0].innerHTML = rightCharInfo;
 	arr[0].previousElementSibling.src = rightCharImg;
 	arr[1].innerHTML = firstFakeChar[0];
@@ -43,6 +51,8 @@ async function assignButton() {
 }
 
 async function getCharacter() {
+	buttonBox.classList.add('hide');
+	loadingDOM.classList.remove('hide');
 	const resPeople = await fetch(`api/id/${randomCharNum()}.json`);
 	const charInfo = await resPeople.json();
 	rightCharInfo = charInfo.name;
@@ -51,8 +61,11 @@ async function getCharacter() {
 	info.querySelector('.homeworld').lastElementChild.innerHTML = `${checkUnknow(charInfo.homeworld)}`;
 	info.querySelector('.date').lastElementChild.innerHTML = `${dateEra(charInfo.born)} - ${dateEra(charInfo.died)}`;
 	info.querySelector('.died').lastElementChild.innerHTML = `${checkUnknow(charInfo.diedLocation)}`;
-
+	imgLoaded = 0;
 	await assignButton();
+	setTimeout(function () {
+		addPointsDOM.classList.add('hide');
+	}, 1000);
 }
 
 async function getFakeCharName() {
@@ -88,10 +101,12 @@ function shuffle(arr) {
 
 const check = (e) => {
 	if (e.target.localName === 'button' && e.target.innerHTML !== rightCharInfo) {
-		score--;
+		score = 0;
 		pointsUpdate();
+		e.target.classList.add('red');
 	}
 	if (e.target.innerHTML === rightCharInfo) {
+		addPointsDOM.classList.remove('hide');
 		score++;
 		pointsUpdate();
 		getCharacter();
@@ -102,6 +117,17 @@ const pointsUpdate = () => {
 	pointsDOM.firstElementChild.innerHTML = score;
 };
 
-buttonBox.addEventListener('click', check);
+const load = () => {
+	imgLoaded++;
+	if (imgLoaded === 3) {
+		loadingDOM.classList.add('hide');
+		buttonBox.classList.remove('hide');
+	}
+};
 
 getCharacter();
+
+buttonBox.addEventListener('click', check);
+img.addEventListener('load', load);
+img2.addEventListener('load', load);
+img3.addEventListener('load', load);

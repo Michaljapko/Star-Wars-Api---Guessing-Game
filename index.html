@@ -13,12 +13,13 @@
 	</head>
 	<body>
 		<main>
+			<div class="loading"><i class="fas fa-jedi"></i> LOADING</div>
 			<div class="button-box">
 				<div class="button-box__box">
 					<div class="holo"></div>
 					<div class="holoblue"></div>
 					<div class="holoshadow"></div>
-					<img class="animationholo" src="https://vignette.wikia.nocookie.net/starwars/images/6/60/WedgeHelmetless-ROTJHD.jpg" alt="" />
+					<img class="animationholo img" src="https://vignette.wikia.nocookie.net/starwars/images/6/60/WedgeHelmetless-ROTJHD.jpg" alt="" />
 
 					<button></button>
 				</div>
@@ -40,6 +41,7 @@
 				</div>
 			</div>
 			<div class="info">
+				<p class="points">Who's That?</p>
 				<p class="species"><i class="fas fa-street-view"></i> Species: <span></span></p>
 
 				<p class="homeworld"><i class="fas fa-globe-asia"></i> Homeworld:<span></span></p>
@@ -48,7 +50,7 @@
 
 				<p class="died"><i class="fas fa-diagnoses"></i> Death Location:<span></span></p>
 
-				<p class="points">Score: <span></span></p>
+				<p class="points" id="points">Score: <span>0</span> <span class="addpoints hide">+1</span></p>
 			</div>
 		</main>
 		<script src="script.js"></script>

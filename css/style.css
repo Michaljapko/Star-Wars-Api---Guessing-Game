@@ -18,9 +18,10 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
   color: #e2e2e2;
   height: 100vh;
-  background-color: #111111;
-  background: url("../img/bg.jpg");
+  background: url(../img/bg.jpg);
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000;
 }
 
 main {
@@ -34,6 +35,8 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+  top: -30px;
   max-width: 400px;
   background: linear-gradient(3deg, #3d649b 0%, #11111100 100%);
   -webkit-box-shadow: 0px 20px 15px -5px #314f74;
@@ -46,6 +49,7 @@ main {
   background: #3c619561;
   margin-top: 10px;
   padding: 0 20px;
+  font-size: 0.8rem;
 }
 
 .info p {
@@ -55,10 +59,9 @@ main {
 }
 
 .info p i {
-  font-size: 1.2rem;
-  opacity: 0.4;
+  opacity: 0.7;
   margin: 0 10px;
-  width: 20px;
+  width: 30px;
 }
 
 .info p span {
@@ -68,12 +71,19 @@ main {
 }
 
 .info .points {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  padding: 4px;
   text-align: center;
+  border-bottom: 1px solid #a5cbff33;
 }
 
 .info .points span {
   font-size: 1rem;
+}
+
+.info .points .addpoints {
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
 }
 
 .button-box {
@@ -146,6 +156,8 @@ main {
   background-position-y: 0px;
   -webkit-animation-name: holograin;
           animation-name: holograin;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
   -webkit-animation-duration: 30s;
           animation-duration: 30s;
   -webkit-animation-iteration-count: infinite;
@@ -182,6 +194,42 @@ main {
   z-index: 3;
 }
 
+.loading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  top: 100px;
+  font-size: 4rem;
+  z-index: 2;
+  width: 100%;
+  height: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  opacity: 0.5;
+  text-shadow: 2px -3px 20px #3f8aff2b;
+  color: #2f4c74;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.loading i {
+  -webkit-animation: loading;
+          animation: loading;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
 button {
   position: relative;
   top: -4px;
@@ -200,9 +248,12 @@ button {
   transition: 0.3s border;
 }
 
-button:hover {
-  border: 1px solid #669ade;
-  background: linear-gradient(177deg, #3a8cff 0%, #11111100 100%);
+.red {
+  background: linear-gradient(177deg, #9b3d3d 0%, #11111100 100%);
+}
+
+.hide {
+  opacity: 0;
 }
 
 @-webkit-keyframes holo {
@@ -251,11 +302,8 @@ button:hover {
   0% {
     background-position-y: 0px;
   }
-  50% {
-    background-position-y: 800px;
-  }
   100% {
-    background-position-y: 0px;
+    background-position-y: 800px;
   }
 }
 
@@ -263,11 +311,30 @@ button:hover {
   0% {
     background-position-y: 0px;
   }
-  50% {
+  100% {
     background-position-y: 800px;
   }
+}
+
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate3d(0, 1, 0, 0deg);
+            transform: rotate3d(0, 1, 0, 0deg);
+  }
   100% {
-    background-position-y: 0px;
+    -webkit-transform: rotate3d(0, 1, 0, 360deg);
+            transform: rotate3d(0, 1, 0, 360deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate3d(0, 1, 0, 0deg);
+            transform: rotate3d(0, 1, 0, 0deg);
+  }
+  100% {
+    -webkit-transform: rotate3d(0, 1, 0, 360deg);
+            transform: rotate3d(0, 1, 0, 360deg);
   }
 }
 
